@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{header}"></div>
+<div id="form-wrapper">
+    <h1 th:text="${title}" class="mt-20"></h1>
+    <form method="post" th:action="${url}" th:object="${user}" class="main-form mt-20">
+        <div class="form-field">
+            <label th:if="${user.id != null}">ID</label>
+            <input type="text" readonly th:field="*{id}" th:value="*{id}" th:if="${user.id != null}"/>
+        </div>
+
+        <div class="form-field">
+            <label for="firstname">First Name</label>
+            <input type="text" th:field="*{firstname}" required />
+            <div class="field-error" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
+        </div>
+
+        <div class="form-field">
+            <label for="lastname">Last Name</label>
+            <input type="text" required th:field="*{lastname}"/>
+            <div class="field-error" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+        </div>
+
+
+        <div class="form-field">
+            <label for="username">Email</label>
+            <input type="email" required th:field="*{username}"/>
+            <div class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </div>
+
+        <div class="form-field">
+            <label for="age">Age</label>
+            <input type="number" required th:field="*{age}"/>
+            <div class="field-error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+        </div>
+
+
+        <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" th:required="user.id == null" th:field="*{password}"/>
+            <div class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <div class="form-field">
+            <label for="roles" class="display-inline-block">Choose Roles</label>
+            <select class="select-decoration display-inline-block" th:name="roles" required multiple
+            >
+                <option
+                        th:each="role : ${roles}"
+                        th:value="${role.id}"
+                        th:text="${role.name}"
+                        th:selected="${user.isPresentRole(role.id)}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>Welcome to Index PAGE!</h1>
+<h4>Credentials</h4>
+<p><code>admin admin</code> - for ROLE_ADMIN</p>
+<p><code>user user</code> - for ROLE_USER</p>
+<a th:href="@{/user}">User page</a>
+<a th:href="@{/admin}">Admin page</a>
+</body>
+</html>

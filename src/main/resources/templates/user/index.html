@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{header}"></div>
+<div id="main-wrapper">
+    <table>
+        <caption><h2>User Info</h2></caption>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${user}">
+            <td data-label="ID" th:text="*{id}"></td>
+            <td data-label="First Name" th:text="*{firstname}"></td>
+            <td data-label="Last Name" th:text="*{lastname}"></td>
+            <td data-label="Email" th:text="*{username}"></td>
+            <td data-label="Age" th:text="*{age}"></td>
+            <td data-label="Roles" th:text="*{rolesAsString}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

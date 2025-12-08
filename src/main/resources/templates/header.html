@@ -1,0 +1,9 @@
+<div id="header">
+    <h3 class="text-right">
+        <a th:href="@{/admin}">Admin page</a>
+        <a th:href="@{/user}">User page</a>
+        <form class="display-inline-block" method="post" th:action="@{/logout}">
+            <button class="btn-primary">Logout</button>
+        </form>
+    </h3>
+</div>
