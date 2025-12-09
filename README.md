@@ -9,7 +9,7 @@ db.username=root
 db.password=root
 ```
 
-Solution provided for MySQL. After setting db.properties file, database must by empty (required). Now database migration version control implemented by FlyWayDB plugin. For quick start db migration create: 2 roles:```ADMIN and USER```
+Solution provided for MySQL. After setting db.properties file, database must be empty (required). Now database migration version control implemented by FlyWayDB plugin. For quick start db migration create: 2 roles:```ADMIN and USER```
 and 2 user:
 ```
 admin admin - with ADMIN,USER roles
