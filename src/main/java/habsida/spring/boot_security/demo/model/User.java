@@ -40,14 +40,12 @@ public class User implements UserDetails {
     @Override
     @NullMarked
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles().stream()
-            .map(role -> role.getName().toAuthority())
-            .collect(Collectors.toList());
+        return roles;
     }
 
     public String getRolesAsString() {
         return "[" + roles.stream()
-            .map(role -> role.getName().toString())
+            .map(Role::getNameAsString)
             .collect(Collectors.joining(", ")) + "]";
     }
 }

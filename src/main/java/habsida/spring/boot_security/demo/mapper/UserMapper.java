@@ -16,6 +16,7 @@ public interface UserMapper {
     @Mapping(target = "username", qualifiedByName = "trimString")
     @Mapping(target = "password", ignore = true)
     @Mapping(target = "roles", ignore = true)
+    @Mapping(target = "authorities", ignore = true)
     User toEntity(UserDto dto);
 
     @Mapping(target = "password", ignore = true)
@@ -28,6 +29,7 @@ public interface UserMapper {
     @Mapping(target = "username", qualifiedByName = "trimString")
     @Mapping(target = "password", ignore = true)
     @Mapping(target = "roles", ignore = true)
+    @Mapping(target = "authorities", ignore = true)
     void updateEntityFromDto(UserDto dto, @MappingTarget User entity);
 
 

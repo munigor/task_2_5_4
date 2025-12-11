@@ -3,7 +3,7 @@ package habsida.spring.boot_security.demo.service;
 import habsida.spring.boot_security.demo.model.Role;
 import habsida.spring.boot_security.demo.model.UserRole;
 import habsida.spring.boot_security.demo.repository.RoleRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 public class RoleService {
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
     public List<Role> findAll() {
         return roleRepository.findAll();

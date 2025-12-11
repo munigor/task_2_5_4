@@ -5,12 +5,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jspecify.annotations.NonNull;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Set;
 
 @Component
@@ -23,7 +22,7 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
         Authentication authentication
     ) throws IOException {
 
-        Set<? extends GrantedAuthority> roles = new HashSet<>(authentication.getAuthorities());
+        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains(UserRole.ADMIN.toAuthority())) {
             response.sendRedirect( "/admin");
         } else if (roles.contains(UserRole.USER.toAuthority())) {

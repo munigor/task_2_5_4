@@ -3,18 +3,16 @@ package habsida.spring.boot_security.demo.dto;
 import habsida.spring.boot_security.demo.repository.UserRepository;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, UserDto> {
 
     private final UserRepository userRepository;
 
     private String message;
-
-    public UniqueUsernameValidator(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public void initialize(UniqueUsername constraintAnnotation) {

@@ -6,7 +6,7 @@ import habsida.spring.boot_security.demo.model.Role;
 import habsida.spring.boot_security.demo.model.User;
 import habsida.spring.boot_security.demo.model.UserRole;
 import habsida.spring.boot_security.demo.repository.UserRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 public class UserService {
     private final UserRepository userRepository;
@@ -69,5 +69,4 @@ public class UserService {
              new UsernameNotFoundException("User with id = " + id + " not found")
         );
     }
-
 }
